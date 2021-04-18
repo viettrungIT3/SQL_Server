@@ -1,0 +1,17 @@
+CREATE DATABASE QLBanHang
+
+-- VD ngay 15/01/2021
+
+ON PRIMARY (
+	NAME = 'QLBanHang_DATA',
+	FILENAME ='E:\SQL Server Management Studio\BTSQL_TrenLop\VD1.MDF',
+	SIZE = 50MB,	MAXSIZE = 200MB,
+	FILEGROWTH = 10%
+)
+LOG ON (
+	NAME = 'QLBanHang_LOG',
+	FILENAME ='E:\SQL Server Management Studio\BTSQL_TrenLop\VD1.LDF',
+	SIZE = 10MB, MAXSIZE = UNLIMITED,
+	FILEGROWTH = 5MB
+)
+

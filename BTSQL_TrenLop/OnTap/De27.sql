@@ -1,0 +1,62 @@
+﻿CREATE DATABASE DE27
+
+GO
+USE DE27
+GO
+
+--CREATE TABLE
+CREATE TABLE Sach
+(
+	maSach NVARCHAR(10) PRIMARY KEY NOT NULL,
+	tenSach NVARCHAR(30) NOT NULL,
+	soTrang INT,
+	slTon int
+)
+GO 
+CREATE TABLE PhieuMuon
+(
+	maPM NVARCHAR(10) PRIMARY KEY NOT NULL,
+	ngayMuon DATE NOT NULL,
+	HoTenDG NVARCHAR(30) NOT NULL
+)
+GO 
+CREATE TABLE SachMuon
+(
+	maPM NVARCHAR(10)  NOT NULL,
+	maSach NVARCHAR(10)  NOT NULL,
+	soNgayMuon INT
+	PRIMARY KEY (maPM, MaSach),
+	FOREIGN KEY (maPM) REFERENCES dbo.PhieuMuon(maPM) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (MaSach) REFERENCES dbo.Sach(MaSach) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+--Insert data
+GO
+INSERT INTO Sach VALUES
+(	N'S01', N'Sách 1', 200, 26),
+(	N'S02', N'Sách 2', 200, 26)
+
+GO
+INSERT INTO dbo.PhieuMuon VALUES
+(	N'PM01', '20210303', N'Nguyễn Văn Tèo'),
+(	N'PM02', '20210404', N'Nguyễn Văn Tý')
+
+GO
+INSERT INTO dbo.SachMuon VALUES
+(	N'PM01', N'S01', 30),
+(	N'PM01', N'S02', 30),
+(	N'PM02', N'S01', 30),
+(	N'PM02', N'S02', 30)
+
+--Display 
+SELECT * FROM dbo.Sach
+SELECT * FROM dbo.PhieuMuon 
+SELECT * FROM dbo.SachMuon
+
+-- Câu 2:
+GO
+CREATE PROC sp_Cau2 ( @ngay INT, @thang INT, @nam INT)
+AS
+	BEGIN
+	    
+	END
